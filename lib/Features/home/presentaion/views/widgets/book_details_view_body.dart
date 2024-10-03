@@ -2,6 +2,7 @@ import 'package:bookly_app/Features/home/presentaion/views/widgets/book_rating.d
 import 'package:bookly_app/Features/home/presentaion/views/widgets/books_action.dart';
 import 'package:bookly_app/Features/home/presentaion/views/widgets/custom_book_details_app_bar.dart';
 import 'package:bookly_app/Features/home/presentaion/views/widgets/custom_book_item.dart';
+import 'package:bookly_app/Features/home/presentaion/views/widgets/similar_books_list_view.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -21,14 +22,14 @@ class BookDetailsViewBody extends StatelessWidget {
             child: const CustomBookImage(),
           ),
           const SizedBox(
-            height: 43,
+            height: 30,
           ),
           const Text(
             'The Jungle Book',
             style: Styles.textStyle30,
           ),
           const SizedBox(
-            height: 6,
+            height: 3,
           ),
           Text(
             'Rudyard Kipling',
@@ -36,15 +37,31 @@ class BookDetailsViewBody extends StatelessWidget {
                 color: const Color(0xff707070), fontStyle: FontStyle.italic),
           ),
           const SizedBox(
-            height: 18,
+            height: 10,
           ),
           const BookRating(
             mainAxisAlignment: MainAxisAlignment.center,
           ),
           const SizedBox(
-            height: 37,
+            height: 30,
           ),
           const BooksAction(),
+          const SizedBox(
+            height: 40,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'You can also read',
+              style: Styles.textStyle14.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const SimilarBooksListView(),
         ],
       ),
     );

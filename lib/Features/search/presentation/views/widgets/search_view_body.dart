@@ -22,7 +22,7 @@ class SearchViewBody extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Text(
-            'Best Seller',
+            'Search Result',
             style: Styles.textStyle18,
           ),
         ),
@@ -42,17 +42,19 @@ class SearchResultListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      itemBuilder: (context, index) {
-        return const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Text('hello') //BookListViewItem(),
-            );
-      },
-      itemCount: 10,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: ListView.builder(
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) {
+          return const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Text('hello') //BookListViewItem(),
+              );
+        },
+        itemCount: 10,
+      ),
     );
-    ;
   }
 }

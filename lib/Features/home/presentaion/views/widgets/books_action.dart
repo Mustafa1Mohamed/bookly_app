@@ -28,11 +28,11 @@ class BooksAction extends StatelessWidget {
               onPressed: () async {
                 Uri url = Uri.parse(bookModel.volumeInfo.previewLink!);
                 if (await canLaunchUrl(url)) {
-                  await launchUrl(url); 
+                  await launchUrl(url);
                 }
               },
               fontSize: 16,
-              text: 'Free Preview',
+              text: getText(bookModel),
               backGroundColor: const Color(0xffEF8262),
               textColor: Colors.white,
               borderRadius: const BorderRadius.only(
@@ -44,5 +44,12 @@ class BooksAction extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String getText(BookModel bookModel) {
+    if (bookModel.volumeInfo.previewLink == null) {
+      return 'Not Avaliable';
+    }
+    return 'Free Preview';
   }
 }

@@ -15,7 +15,7 @@ class VolumeInfo extends Equatable {
   final ReadingModes? readingModes;
   final int? pageCount;
   final int? ratingsCount;
-  final int? averageRating;
+  final num? averageRating;
   final String? printType;
   final List<String>? categories;
   final String? maturityRating;
@@ -75,8 +75,9 @@ class VolumeInfo extends Equatable {
             ? null
             : PanelizationSummary.fromJson(
                 json['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks:json['imageLinks']== null? null:
-            ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+        imageLinks: json['imageLinks'] == null
+            ? null
+            : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,
         infoLink: json['infoLink'] as String?,

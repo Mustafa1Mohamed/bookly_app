@@ -5,8 +5,29 @@ import 'package:equatable/equatable.dart';
 
 part 'search_books_state.dart';
 
-class SearchCubitCubit extends Cubit<SearchCubitState> {
-  SearchCubitCubit(this.searchRepo) : super(SearchCubitInitial());
+class SearchCubitCubit extends Cubit<SearchState> {
+  SearchCubitCubit(this.searchRepo) : super(SearchInitialState());
   final SearchRepo searchRepo;
-  
+  List<BookModel> resultSearch = [];
+
+  void search(
+      {required String searchWord}) async {
+    emit(SearchLoadingState());
+
+    if (searchWord.isEmpty) {
+      emit(SearchEmptyState());
+    } else {
+      var data = await searchRepo.fetchSearchResult(
+          searchWord: searchWord);
+      data.fold(
+        (failure) {
+          emit(SearchFailureState(errMessage: failure));
+        },
+        (searchReasult) {
+          resultSearch = searchReasult;
+          emit(SearchSuccessState(books: searchReasult));
+        },
+      );
+    }
+  }
 }
